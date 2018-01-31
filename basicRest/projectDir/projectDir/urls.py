@@ -29,6 +29,9 @@ router.register(r'groups', views.GroupViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include(router.urls)),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^products/$', views.ProductList.as_view()),
+    url(r'^products/(?P<pk>[0-9]+)/$', views.ProductDetail.as_view()),
+    url(r'^model/$', views.IncredibleView.as_view()),
 ]
 
