@@ -20,4 +20,4 @@ You can use the API by making a `GET` request to the following endpoints:
 In facerec endpoint I use chunks of code of this amazing [tutorial](https://github.com/informramiz/opencv-face-recognition-python)
 
 
-The reference of this APi is <https://github.com/wassgha/FaceRecognitionAPI/blob/master/api/views.py>
+The reference of this APi is based on this link <https://github.com/wassgha/FaceRecognitionAPI/blob/master/api/views.py>
