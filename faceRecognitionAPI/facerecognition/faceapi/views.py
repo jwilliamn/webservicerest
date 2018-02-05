@@ -39,7 +39,7 @@ class IncredibleView(views.APIView):
 		print("Predicting images...")
 
 		# load test images
-		test_img1 = cv2.imread(os.path.join(settings.MEDIA_ROOT, 'test-data/test1.jpg'))
+		test_img1 = cv2.imread(os.path.join(settings.MEDIA_ROOT, 'test-data/test2A.jpg'))
 		test_img2 = cv2.imread(os.path.join(settings.MEDIA_ROOT, 'test-data/test2.jpg'))
 
 		# perform a prediction
@@ -65,7 +65,7 @@ class IncredibleView(views.APIView):
 		#cv2.destroyAllWindows()
 		#cv2.waitKey(1)
 		#cv2.destroyAllWindows()
-		cv2.imwrite(os.path.join(res_path, "out1.png"), predicted_img1)
+		cv2.imwrite(os.path.join(res_path, lbtxt + ".jpg"), predicted_img1)
 
 		# Return it in your custom format
 		return JsonResponse({

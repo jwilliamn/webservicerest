@@ -12,7 +12,7 @@ lbp_classifier = 'lbpcascade_frontalface.xml'
 lbp_path = os.path.join(settings.RESOURCE_ROOT, lbp_classifier)
 
 # Labels
-subjects = ["", "Tom Cruise", "Shahrukh Khan"]
+subjects = ["", "Tom Cruise", "Shahrukh Khan", "Amy Lee"]
 
 
 # Function to detect face using OpenCV
@@ -77,6 +77,7 @@ def prepare_training_data(data_folder_path):
 
 			# build image path
 			image_path = subject_dir_path + "/" + image_name
+			#print("image path:", image_path)
 
 			# read image
 			image = cv2.imread(image_path)
@@ -98,6 +99,7 @@ def prepare_training_data(data_folder_path):
 	#cv2.destroyAllWindows()
 	#cv2.waitKey(1)
 	#cv2.destroyAllWindows()
+	#print("labels:", labels)
 
 	return faces, labels
 
@@ -135,7 +137,7 @@ def predict(test_img, face_recog):
 	print("label:", label)
 
 	# get name of respective label returned by face recognizer
-	label_text = subjects[max(label)]
+	label_text = subjects[label[0]]
 
 	# draw_rectangle around the face detected and the name of the predicted person
 	draw_rectangle(img, rect)
