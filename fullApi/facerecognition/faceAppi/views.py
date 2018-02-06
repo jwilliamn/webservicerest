@@ -100,19 +100,23 @@ def recognize(request):
 	return JsonResponse(data)
 
 
+@csrf_exempt
 def test(request):
 	# initialize the data dictionary to be returned by the request
 	data = {}
 	if request.method == "POST":
 		# convert string of image data to uint8
-		nparr = np.fromstring(request.data, np.uint8)
+		print("request", request.POST)
+		nparr = np.fromstring(request.POST.get('data', None), np.uint8)
 		# decode image
 		img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+		#img = request.POST.get('data', None)
+		print("type of image",type(img))
 
 		# Convert the image to grayscale, load the face cascade detector
 		# and detect faces in the image
-		image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-		rects = image.shape
+		#image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+		rects = [2,4,1,4]#img.shape
 		#rects = detector.detectMultiScale(image, scaleFactor=1.1, minNeighbors=5,
 		#	minSize=(30,30), flags=0)
 
