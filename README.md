@@ -24,10 +24,10 @@ In facerec endpoint I use chunks of code of this amazing [tutorial](https://gith
 
 ### Requests
 This API accepts `GET` or `POST` requests in the following endpoints:
-| Endpoint     | Method    | Description|
+| Endpoint     | Method         | Description|
 | ------------- |:-------------:|:----------:|
-| `/recognize`   | `GET` | http://localhost:8000/recognize/?url=http:url/path/to/image|
-| `/test`| `POST` | make request post given: (url, data=files)|
+| `/recognize` | `GET`          | http://localhost:8000/recognize/?url=http:url/path/to/image|
+| `/test`      | `POST`         | make request post given: (url, data=files)|
 
 This is a basic API that uses the most used methods `GET` and `POST`. In clientApp subdirectory I wrote client.py that send post requests of encoded images to the `/test` endpoint.
 
