@@ -22,10 +22,10 @@ _, img_encoded = cv2.imencode('.jpg', img)
 with open(image_path, "rb") as img:
 	image_data=img.read()
 
-image_64encode = base64.encodestring(image_data)
-print(type(image_64encode))
+image_encoded = base64.encodestring(image_data)
+print('type of image_encoded', type(image_encoded))
 #print(type(image_data))
-files = {'data': image_64encode}
+files = {'data': image_encoded, 'type': 'image'}
 
 # send http request with image and receive response
 response = requests.post(test_url, data=files) #data=img_encoded.tostring()

@@ -106,17 +106,26 @@ def test(request):
 	data = {}
 	if request.method == "POST":
 		# convert string of image data to uint8
-		print("request", request.POST)
-		nparr = np.fromstring(request.POST.get('data', None), np.uint8)
+		#print("request", request.POST)
+		nparr = np.fromstring(request.POST.get('data', ''), np.uint8)
 		# decode image
 		img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
 		#img = request.POST.get('data', None)
-		print("type of image",type(img))
+		image_encoded = request.POST.get('data', '')
+		image_decoded = base64.b64decode(image_encoded)
+		image = np.fromstring(image_decoded, dtype=np.uint8)
+		image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+		print("type of image_decoded", type(image_decoded))
+		print("type of image", type(image), image.shape)
+
+		#cv2.imshow('image', image)
+		#cv2.waitKey(0)
+		#cv2.destroyAllWindows()
 
 		# Convert the image to grayscale, load the face cascade detector
 		# and detect faces in the image
 		#image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-		rects = [2,4,1,4]#img.shape
+		rects = image.shape
 		#rects = detector.detectMultiScale(image, scaleFactor=1.1, minNeighbors=5,
 		#	minSize=(30,30), flags=0)
 
@@ -127,14 +136,13 @@ def test(request):
 		else:
 			x, y, w, h = rects[0], rects[1], rects[0], rects[1]
 			image_val = {
-				"message": 'Image received',
 				"x_value": x,
 				"y_value": y,
 				"w_value": w,
 				"h_value": h,
 			}
 
-			data.update({"message": True, "dimensios": image_val})
+			data.update({"message": True, "dimensions": image_val})
 
 	# return a JSON response
 	return JsonResponse(data)
