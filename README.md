@@ -24,6 +24,7 @@ In facerec endpoint I use chunks of code of this amazing [tutorial](https://gith
 
 ### Requests
 This API accepts `GET` or `POST` requests in the following endpoints:
+
 | Endpoint     | Method         | Description|
 | ------------- |:-------------:|:----------:|
 | `/recognize` | `GET`          | http://localhost:8000/recognize/?url=http:url/path/to/image|
