@@ -33,6 +33,7 @@ This API accepts `GET` or `POST` requests in the following endpoints:
 This is a basic API that uses the most used methods `GET` and `POST`. In clientApp subdirectory I wrote client.py that send post requests of encoded images to the `/test` endpoint.
 
 To get this done I used the following references:
+
 [client side](https://gist.github.com/kylehounslow/767fb72fde2ebdd010a0bf4242371594), eventhough that this reference uses Flask, I adapted to Django.
 
 [server side](https://github.com/wassgha/FaceRecognitionAPI/blob/master/api/views.py)
